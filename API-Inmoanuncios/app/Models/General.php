@@ -9,17 +9,6 @@ class General extends Model
 {
     use HasFactory;
 
-    // /**
-    //  * The primary key associated with the table.
-    //  *
-    //  * @var string
-    //  */
-    // protected $primaryKey = 'usuario_id';
-
-    // public $incrementing = false;
-
-    // protected $keyType = 'biginteger';
-
     public $timestamps = false;
 
     /**
