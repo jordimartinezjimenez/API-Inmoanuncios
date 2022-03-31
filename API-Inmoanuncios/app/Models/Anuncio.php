@@ -9,7 +9,7 @@ class Anuncio extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

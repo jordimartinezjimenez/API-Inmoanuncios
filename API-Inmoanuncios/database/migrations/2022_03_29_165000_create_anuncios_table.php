@@ -32,6 +32,7 @@ class CreateAnunciosTable extends Migration
             $table->integer('habitaciones');
             $table->integer('area');
             $table->text('descripcion');
+            $table->timestamp('created_at');
             // $table->timestamps();
         });
         // referencia imagen vendedor provincia municipio cp precio tipo habitaciones area descripcion trato
