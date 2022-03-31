@@ -16,6 +16,8 @@ class CreateAnunciosTable extends Migration
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
             $table->string('referencia');
+            $table->unsignedBigInteger('vendedor_id');
+            $table->foreign('vendedor_id')->references('usuario_id')->on('generals');
             // $table->string('referencia')->default(randomReferencia());
             $table->string('imagen');
             // $table->unsignedBigInteger('provincia_id');

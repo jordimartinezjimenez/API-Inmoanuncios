@@ -22,6 +22,7 @@ class CreateGeneralsTable extends Migration
             $table->string('apellidos');
             $table->string('email');
             $table->integer('telefono');
+            $table->string('imagen');
             // $table->timestamps();
         });
     }
