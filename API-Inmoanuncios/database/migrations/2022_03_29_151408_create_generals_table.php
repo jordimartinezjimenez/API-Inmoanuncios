@@ -16,13 +16,13 @@ class CreateGeneralsTable extends Migration
     {
         Schema::create('generals', function (Blueprint $table) {
             // $table->id();
-            $table->unsignedBigInteger('usuario_id')->primary();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreign('id')->references('id')->on('usuarios');
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('email');
             $table->integer('telefono');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             // $table->timestamps();
         });
     }

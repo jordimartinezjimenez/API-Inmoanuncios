@@ -9,7 +9,7 @@ class Anuncio extends Model
 {
     use HasFactory;
 
-    // public $timestamps = false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -17,17 +17,18 @@ class Anuncio extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'referencia',
+        'vendedor_id',
         'imagen',
-        'vendedor',
-        'provincia_id',
         'municipio_id',
         'cp',
         'precio',
         'tipo_id',
+        'trato',
         'habitaciones',
         'area',
         'descripcion',
-        'trato',
+        'created_at',
     ];
-    // referencia imagen vendedor provincia municipio cp precio tipo habitaciones area descripcion trato
+    // protected $guarded = ['*'];
 }

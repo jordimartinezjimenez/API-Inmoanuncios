@@ -16,8 +16,8 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             // $table->id();
-            $table->unsignedBigInteger('usuario_id')->primary();
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('id')->primary();
+            $table->foreign('id')->references('id')->on('usuarios');
             // $table->timestamps();
         });
     }

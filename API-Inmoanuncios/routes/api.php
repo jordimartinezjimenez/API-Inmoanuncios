@@ -29,21 +29,30 @@ Route::delete('/anuncio/{id}', [ApiController::class, 'deleteAnuncio']);
 
 // Usuarios
 Route::get('/usuarios', [ApiController::class, 'getUsuarios']);
+Route::get('/usuario/{id}', [ApiController::class, 'getUsuario']);
 
     // Admins
     Route::get('/admins', [ApiController::class, 'getAdmins']);
+    Route::get('/admin/{id}', [ApiController::class, 'getAdmin']);
 
     // Generals
     Route::get('/generals', [ApiController::class, 'getGenerals']);
+    Route::get('/general/{id}', [ApiController::class, 'getGeneral']);
+    Route::put('/general/{id}', [ApiController::class, 'updateGeneral']);
+    Route::post('/general', [ApiController::class, 'insertGeneral']);
+    Route::delete('/general/{id}', [ApiController::class, 'deleteGeneral']);
 
 // Provincias
 Route::get('/provincias', [ApiController::class, 'getProvincias']);
+Route::get('/provincia/{id}', [ApiController::class, 'getProvincia']);
 
 // Municipios
 Route::get('/municipios', [ApiController::class, 'getMunicipios']);
+Route::get('/municipio/{id}', [ApiController::class, 'getMunicipio']);
 
 // Tipos
 Route::get('/tipos', [ApiController::class, 'getTipos']);
+Route::get('/tipo/{id}', [ApiController::class, 'getTipo']);
 
 
 

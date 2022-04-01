@@ -1,0 +1,867 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API INMOANUNCIOS",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/daw/m14/Inmoanuncios/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+            "description": "Jordi Martinez"
+        },
+        {
+            "url": "http://localhost/2021-2022/M14/proyecto/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+            "description": "Octavio Iorio"
+        }
+    ],
+    "paths": {
+        "/api/anuncios": {
+            "get": {
+                "tags": [
+                    "Anuncios"
+                ],
+                "summary": "Ver todos los anuncios.",
+                "operationId": "a81e71ca61feb3dea99d23fe02853164",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los anuncios."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/anuncio/{id}": {
+            "get": {
+                "tags": [
+                    "Anuncios"
+                ],
+                "summary": "Ver un anuncio.",
+                "operationId": "170752245e1cf1aee96301c037f1cd0d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el anuncio por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Anuncios"
+                ],
+                "summary": "Publicar un anuncio.",
+                "operationId": "81d86dbf9b1e721250120f0d0d9c490c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "referencia",
+                        "in": "query",
+                        "description": "referencia del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "vendedor_id",
+                        "in": "query",
+                        "description": "id del usuario-vendedor del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "imagen",
+                        "in": "query",
+                        "description": "imagen del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio_id",
+                        "in": "query",
+                        "description": "id del municipio del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "cp",
+                        "in": "query",
+                        "description": "codigo postal del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "precio",
+                        "in": "query",
+                        "description": "precio del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "double"
+                        }
+                    },
+                    {
+                        "name": "tipo_id",
+                        "in": "query",
+                        "description": "id del tipo de inmueble del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trato",
+                        "in": "query",
+                        "description": "trato de inmueble del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Alquiler",
+                                "Venta"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "habitaciones",
+                        "in": "query",
+                        "description": "habitaciones del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "area/m2 del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "descripcion",
+                        "in": "query",
+                        "description": "descripcion del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "text"
+                        }
+                    },
+                    {
+                        "name": "created_at",
+                        "in": "query",
+                        "description": "fecha de creacion del anuncio",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el anuncio que hemos modificado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Anuncios"
+                ],
+                "summary": "Modificar un anuncio.",
+                "operationId": "e7f86b1d1f265de7cfc61aee40f44a27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "referencia",
+                        "in": "query",
+                        "description": "referencia del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "vendedor_id",
+                        "in": "query",
+                        "description": "id del usuario-vendedor del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "imagen",
+                        "in": "query",
+                        "description": "imagen del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "municipio_id",
+                        "in": "query",
+                        "description": "id del municipio del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "cp",
+                        "in": "query",
+                        "description": "codigo postal del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "precio",
+                        "in": "query",
+                        "description": "precio del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "double"
+                        }
+                    },
+                    {
+                        "name": "tipo_id",
+                        "in": "query",
+                        "description": "id del tipo de inmueble del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trato",
+                        "in": "query",
+                        "description": "trato de inmueble del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "Alquiler",
+                                "Venta"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "habitaciones",
+                        "in": "query",
+                        "description": "habitaciones del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "area",
+                        "in": "query",
+                        "description": "area/m2 del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "descripcion",
+                        "in": "query",
+                        "description": "descripcion del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "text"
+                        }
+                    },
+                    {
+                        "name": "created_at",
+                        "in": "query",
+                        "description": "fecha de creacion del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el anuncio que hemos insertado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Anuncios"
+                ],
+                "summary": "Eliminar un anuncio.",
+                "operationId": "ec571e61b739941688e434ef2cecdc86",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del anuncio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el anuncio que hemos eliminado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Ver todos los usuarios.",
+                "operationId": "4ae0775c390da2cfd504508b3300ef84",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los usuarios."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/usuario/{id}": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Ver un usuario.",
+                "operationId": "602f16ce735ea47a9672c1ee5f951db2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el usuario por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/admins": {
+            "get": {
+                "tags": [
+                    "Usuarios admin"
+                ],
+                "summary": "Ver todos los usuarios admins.",
+                "operationId": "eba5d62526a3a285410d87a6b6e7568c",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los usuarios admins."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/admin/{id}": {
+            "get": {
+                "tags": [
+                    "Usuarios admin"
+                ],
+                "summary": "Ver un usuario admin.",
+                "operationId": "382f0b0b3bf85ad5237d817017464c50",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del usuario admin",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el usuario admin por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/generals": {
+            "get": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Ver todos los usuarios generales.",
+                "operationId": "79895c593c1e2caa27f6e026b3432bf5",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los usuarios generales."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/general/{id}": {
+            "get": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Ver un usuario general.",
+                "operationId": "251e5bccd5cfcd3c6a9f9cf633556388",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el usuario general por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Registrar usuario general.",
+                "operationId": "8958a5e55a211b7f7af85ae4f4eb8ddb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "nombre",
+                        "in": "query",
+                        "description": "Nombre del usuario general",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "apellidos",
+                        "in": "query",
+                        "description": "Apellidos del usuario general",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email del usuario general",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "telefono",
+                        "in": "query",
+                        "description": "Telefono del usuario general",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "imagen",
+                        "in": "query",
+                        "description": "Imagen del usuario general",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el usuario general que hemos modificado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Registrar usuario general.",
+                "operationId": "5ac30c8df218f85afa01a88e8fdecd91",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "nombre",
+                        "in": "query",
+                        "description": "Nombre del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "apellidos",
+                        "in": "query",
+                        "description": "Apellidos del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "telefono",
+                        "in": "query",
+                        "description": "Telefono del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "imagen",
+                        "in": "query",
+                        "description": "Imagen del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el usuario general que hemos insertado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Eliminar un usuario general.",
+                "operationId": "63efa907e07ec6e155815b88ad81644f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el usuario general que hemos eliminado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/provincias": {
+            "get": {
+                "tags": [
+                    "Provincias"
+                ],
+                "summary": "Ver todas las provincias.",
+                "operationId": "dad398e28dd05f51c22a0f3edcc47652",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todas las provincias."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/provincia/{id}": {
+            "get": {
+                "tags": [
+                    "Provincias"
+                ],
+                "summary": "Ver una provincia.",
+                "operationId": "962e5f6ed028994483707515382e8202",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id de la provincia",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar la provincia por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/municipios": {
+            "get": {
+                "tags": [
+                    "Municipios"
+                ],
+                "summary": "Ver todos los municipios.",
+                "operationId": "a23805a5292870d6681e40f730d78aa7",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los municipios."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/municipio/{id}": {
+            "get": {
+                "tags": [
+                    "Municipios"
+                ],
+                "summary": "Ver un municipio.",
+                "operationId": "dbd653adfe7f876360edb1f37aaeec3e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del municipio",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el municipio por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/tipos": {
+            "get": {
+                "tags": [
+                    "Tipos"
+                ],
+                "summary": "Ver todos los tipos.",
+                "operationId": "d263f91b9748f4513f3dac7c3409887d",
+                "responses": {
+                    "200": {
+                        "description": "Devuelve todos los tipos."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/tipo/{id}": {
+            "get": {
+                "tags": [
+                    "Tipos"
+                ],
+                "summary": "Ver un tipo.",
+                "operationId": "26a2a2c49d4977d73964b31c4ad406da",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id del tipo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resultado de buscar el tipo por id."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
