@@ -603,12 +603,12 @@
                     }
                 }
             },
-            "post": {
+            "delete": {
                 "tags": [
                     "Usuarios generales"
                 ],
-                "summary": "Registrar usuario general.",
-                "operationId": "5ac30c8df218f85afa01a88e8fdecd91",
+                "summary": "Eliminar un usuario general.",
+                "operationId": "63efa907e07ec6e155815b88ad81644f",
                 "parameters": [
                     {
                         "name": "id",
@@ -617,6 +617,46 @@
                         "required": true,
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devuelve el usuario general que hemos eliminado."
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/general": {
+            "post": {
+                "tags": [
+                    "Usuarios generales"
+                ],
+                "summary": "Registrar usuario general.",
+                "operationId": "8c4eca98639e6bebe2d67bf82afb310b",
+                "parameters": [
+                    {
+                        "name": "nickname",
+                        "in": "query",
+                        "description": "Nickname del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Password del usuario general",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     {
@@ -659,7 +699,7 @@
                         "name": "imagen",
                         "in": "query",
                         "description": "Imagen del usuario general",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -668,35 +708,6 @@
                 "responses": {
                     "200": {
                         "description": "Devuelve el usuario general que hemos insertado."
-                    },
-                    "400": {
-                        "description": "Bad request"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "Usuarios generales"
-                ],
-                "summary": "Eliminar un usuario general.",
-                "operationId": "63efa907e07ec6e155815b88ad81644f",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id del usuario general",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devuelve el usuario general que hemos eliminado."
                     },
                     "400": {
                         "description": "Bad request"

@@ -604,16 +604,25 @@ class ApiController extends BaseController
         
         /**
         * @OA\Post(
-        *      path="/api/general/{id}",
+        *      path="/api/general",
         *      tags={"Usuarios generales"},
         *      summary="Registrar usuario general.",
         *      @OA\Parameter(
-        *          name="id",
-        *          description="Id del usuario general",
+        *          name="nickname",
+        *          description="Nickname del usuario general",
         *          required=true,
-        *          in="path",
+        *          in="query",
         *          @OA\Schema(
-        *              type="integer"
+        *              type="string"
+        *          )
+        *      ),
+        *      @OA\Parameter(
+        *          name="password",
+        *          description="Password del usuario general",
+        *          required=true,
+        *          in="query",
+        *          @OA\Schema(
+        *              type="string"
         *          )
         *      ),
         *      @OA\Parameter(
@@ -655,7 +664,7 @@ class ApiController extends BaseController
         *      @OA\Parameter(
         *          name="imagen",
         *          description="Imagen del usuario general",
-        *          required=true,
+        *          required=false,
         *          in="query",
         *          @OA\Schema(
         *              type="string"
@@ -670,7 +679,17 @@ class ApiController extends BaseController
         * )
         */
         function insertGeneral (Request $request) {
-            return General::create($request->all());
+            $usuario = Usuario::create($request->all());
+
+            return General::create([
+                'id' =>  $usuario->id,
+                'nombre' =>  $request->nombre,
+                'apellidos' => $request->apellidos,
+                'email' => $request->email,
+                'telefono' => $request->telefono,
+                'imagen' =>  $request->imagen,
+            ]);
+
         }
         
         /**
