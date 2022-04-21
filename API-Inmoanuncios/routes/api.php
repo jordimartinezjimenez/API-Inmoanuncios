@@ -27,6 +27,12 @@ Route::put('/anuncio/{id}', [ApiController::class, 'updateAnuncio']);
 Route::post('/anuncio', [ApiController::class, 'insertAnuncio']);
 Route::delete('/anuncio/{id}', [ApiController::class, 'deleteAnuncio']);
 
+Route::get('/anuncio/tipo/{id}', [ApiController::class, 'getTipoAnuncio']);
+Route::get('/anuncio/municipio/{id}', [ApiController::class, 'getMunicipioAnuncio']);
+Route::get('/anuncio/provincia/{id}', [ApiController::class, 'getProvinciaAnuncio']);
+    Route::get('/municipio/provincia/{id}', [ApiController::class, 'getProvinciaMunicipio']);
+Route::get('/anuncio/vendedor/{id}', [ApiController::class, 'getVendedorAnuncio']);
+
 // Usuarios
 Route::get('/usuarios', [ApiController::class, 'getUsuarios']);
 Route::get('/usuario/{id}', [ApiController::class, 'getUsuario']);

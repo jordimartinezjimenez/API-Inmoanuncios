@@ -30,5 +30,36 @@ class Anuncio extends Model
         'descripcion',
         'created_at',
     ];
-    // protected $guarded = ['*'];
+
+    /**
+     * Get the tipo that owns the anuncio.
+     */
+    public function tipo()
+    {
+        return $this->belongsTo(Tipo::class);
+    }
+
+    /**
+     * Get the municipio that owns the anuncio.
+     */
+    public function municipio()
+    {
+        return $this->belongsTo(Municipio::class);
+    }
+
+    /**
+     * Get the vendedor that owns the anuncio.
+     */
+    public function vendedor()
+    {
+        return $this->belongsTo(General::class);
+    }
+
+    /**
+     * Get the provincia that owns the anuncio.
+     */
+    public function provincia()
+    {
+        return $this->belongsTo(Provincia::class);
+    }
 }

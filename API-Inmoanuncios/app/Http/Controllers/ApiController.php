@@ -54,6 +54,26 @@ class ApiController extends BaseController
         return Anuncio::all();
     }
 
+    function getTipoAnuncio ($id) {
+        return Anuncio::find($id)->tipo;
+    }
+
+    function getMunicipioAnuncio ($id) {
+        return Anuncio::find($id)->municipio;
+    }
+
+    function getProvinciaAnuncio ($id) {
+        return Anuncio::find($id)->municipio->provincia;
+    }
+
+        function getProvinciaMunicipio ($id) {
+            return Municipio::find($id)->provincia;
+        }
+
+    function getVendedorAnuncio ($id) {
+        return Anuncio::find($id)->vendedor;
+    }
+
     /**
      * @OA\Get(
      *      path="/api/anuncio/{id}",
