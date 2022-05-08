@@ -32,6 +32,7 @@ Route::get('/anuncio/municipio/{id}', [ApiController::class, 'getMunicipioAnunci
 Route::get('/anuncio/provincia/{id}', [ApiController::class, 'getProvinciaAnuncio']);
     Route::get('/municipio/provincia/{id}', [ApiController::class, 'getProvinciaMunicipio']);
 Route::get('/anuncio/vendedor/{id}', [ApiController::class, 'getVendedorAnuncio']);
+Route::get('/anuncio/imagenes/{id}', [ApiController::class, 'getImagenesAnuncio']);
 
 // Usuarios
 Route::get('/usuarios', [ApiController::class, 'getUsuarios']);

@@ -22,12 +22,12 @@ use App\Models\Tipo;
  *      title="API INMOANUNCIOS",
  * )
  *  @OA\Server(
- *      url="http://localhost/daw/m14/Inmoanuncios/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+ *      url="http://localhost/daw/m14/Inmoanuncios/API-Inmoanuncios/public/index.php",
  *      description="Jordi Martinez"
  *  )
  * 
  * @OA\Server(
- *      url="http://localhost/2021-2022/M14/proyecto/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+ *      url="http://localhost/2021-2022/M14/proyecto/API-Inmoanuncios/public/index.php",
  *      description="Octavio Iorio"
  *  )
  */
@@ -72,6 +72,10 @@ class ApiController extends BaseController
 
     function getVendedorAnuncio ($id) {
         return Anuncio::find($id)->vendedor;
+    }
+
+    function getImagenesAnuncio ($id) {
+        return Anuncio::find($id)->anuncioimagen;
     }
 
     /**
@@ -243,16 +247,7 @@ class ApiController extends BaseController
     * @OA\Post(
     *      path="/api/anuncio/{id}",
     *      tags={"Anuncios"},
-    *      summary="Modificar un anuncio.",
-    *      @OA\Parameter(
-    *          name="id",
-    *          description="id del anuncio",
-    *          required=true,
-    *          in="path",
-    *          @OA\Schema(
-    *              type="integer"
-    *          )
-    *      ),
+    *      summary="Insertar un anuncio.",
     *      @OA\Parameter(
     *          name="referencia",
     *          description="referencia del anuncio",
@@ -274,7 +269,7 @@ class ApiController extends BaseController
     *      @OA\Parameter(
     *          name="imagen",
     *          description="imagen del anuncio",
-    *          required=true,
+    *          required=false,
     *          in="query",
     *          @OA\Schema(
     *              type="string"
@@ -304,7 +299,7 @@ class ApiController extends BaseController
     *          required=true,
     *          in="query",
     *          @OA\Schema(
-    *              type="double"
+    *              type="integer"
     *          )
     *      ),
     *      @OA\Parameter(
@@ -347,19 +342,10 @@ class ApiController extends BaseController
     *      @OA\Parameter(
     *          name="descripcion",
     *          description="descripcion del anuncio",
-    *          required=true,
+    *          required=false,
     *          in="query",
     *          @OA\Schema(
     *              type="text"
-    *          )
-    *      ),
-    *      @OA\Parameter(
-    *          name="created_at",
-    *          description="fecha de creacion del anuncio",
-    *          required=true,
-    *          in="query",
-    *          @OA\Schema(
-    *              type="string"
     *          )
     *      ),
     *      @OA\Response(

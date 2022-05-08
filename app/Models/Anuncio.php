@@ -29,6 +29,8 @@ class Anuncio extends Model
         'area',
         'descripcion',
         'created_at',
+        'calle',
+        'num',
     ];
 
     /**
@@ -61,5 +63,14 @@ class Anuncio extends Model
     public function provincia()
     {
         return $this->belongsTo(Provincia::class);
+    }
+
+    /**
+     * Get a list of images that owns the anuncio.
+     */
+    public function anuncioimagen()
+    {
+        return $this->hasMany(AnuncioImagen::class);
+        // return $this->belongsTo(AnuncioImagen::class);
     }
 }

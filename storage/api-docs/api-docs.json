@@ -6,11 +6,11 @@
     },
     "servers": [
         {
-            "url": "http://localhost/daw/m14/Inmoanuncios/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+            "url": "http://localhost/daw/m14/Inmoanuncios/API-Inmoanuncios/public/index.php",
             "description": "Jordi Martinez"
         },
         {
-            "url": "http://localhost/2021-2022/M14/proyecto/API-Inmoanuncios/API-Inmoanuncios/public/index.php",
+            "url": "http://localhost/2021-2022/M14/proyecto/API-Inmoanuncios/public/index.php",
             "description": "Octavio Iorio"
         }
     ],
@@ -210,18 +210,9 @@
                 "tags": [
                     "Anuncios"
                 ],
-                "summary": "Modificar un anuncio.",
+                "summary": "Insertar un anuncio.",
                 "operationId": "e7f86b1d1f265de7cfc61aee40f44a27",
                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id del anuncio",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
                     {
                         "name": "referencia",
                         "in": "query",
@@ -244,7 +235,7 @@
                         "name": "imagen",
                         "in": "query",
                         "description": "imagen del anuncio",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "string"
                         }
@@ -273,7 +264,7 @@
                         "description": "precio del anuncio",
                         "required": true,
                         "schema": {
-                            "type": "double"
+                            "type": "integer"
                         }
                     },
                     {
@@ -320,18 +311,9 @@
                         "name": "descripcion",
                         "in": "query",
                         "description": "descripcion del anuncio",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "text"
-                        }
-                    },
-                    {
-                        "name": "created_at",
-                        "in": "query",
-                        "description": "fecha de creacion del anuncio",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
                         }
                     }
                 ],
