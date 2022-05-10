@@ -46,18 +46,4 @@ class CreateAnunciosTable extends Migration
     {
         Schema::dropIfExists('anuncios');
     }
-
-    public function randomReferencia()
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $referenciaLength = 10;
-        $charactersLength = strlen($characters);
-
-        $referencia = '';
-        for ($i = 0; $i < $referenciaLength; $i++) {
-            $referencia .= $characters[rand(0, $charactersLength - 1)];
-        }
-
-        return $referencia;
-    }
 }
