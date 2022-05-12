@@ -61,7 +61,8 @@ Route::get('/municipio/{id}', [ApiController::class, 'getMunicipio']);
 Route::get('/tipos', [ApiController::class, 'getTipos']);
 Route::get('/tipo/{id}', [ApiController::class, 'getTipo']);
 
-
+// Email
+Route::post('/contactar-vendedor', [ApiController::class, 'contactarVendedor']);
 
 // Ejemplos
 // Route::get('/comptes', [ApiController::class, 'getComptes']);

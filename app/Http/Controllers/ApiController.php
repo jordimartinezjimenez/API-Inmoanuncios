@@ -7,6 +7,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactarVendedor;
 
 use App\Models\Usuario;
 use App\Models\Admin;
@@ -860,6 +862,32 @@ class ApiController extends BaseController
      */
     function getTipo (Request $request, $id) {
         return Tipo::find($id);
+    }
+
+    function contactarVendedor(Request $request) {
+        $comprador = General::find($request->idComprador);
+        $anuncio = Anuncio::find($request->idAnuncio);
+        $municipio = Municipio::find($anuncio->municipio_id);
+        $provincia = Provincia::find($municipio->provincia_id);
+        $tipo = Tipo::find($anuncio->tipo_id);
+
+        $details=[
+            'title' => $comprador->nombre . ' ' . $comprador->apellidos .' le escribe por su anuncio en Inmoanuncios.',
+            'body' => $request->msg,
+            'email' => $comprador->email,
+            'telefono' => $comprador->telefono,
+            'referencia' => $anuncio->referencia,
+            'imagen' => $anuncio->imagen,
+            'provincia' => $provincia->nombre,
+            'municipio' => $municipio->nombre,
+            'precio' => $anuncio->precio,
+            'trato' => $anuncio->trato,
+            'tipo' => $tipo->nombre,
+            'url' => $request->url
+        ];
+
+        Mail::to("inmoanuncios1@gmail.com")->send(new ContactarVendedor($details));
+        return "Email enviado";
     }
 
 }
