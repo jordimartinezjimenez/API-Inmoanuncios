@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Anuncios
 Route::get('/anuncios', [ApiController::class, 'getAnuncios']);
 Route::get('/anuncio/{id}', [ApiController::class, 'getAnuncio']);
-Route::put('/anuncio/{id}', [ApiController::class, 'updateAnuncio']);
+Route::post('/anuncio/{id}', [ApiController::class, 'updateAnuncio']);
 Route::post('/anuncio', [ApiController::class, 'insertAnuncio']);
 Route::delete('/anuncio/{id}', [ApiController::class, 'deleteAnuncio']);
 
@@ -45,7 +45,7 @@ Route::get('/usuario/{id}', [ApiController::class, 'getUsuario']);
     // Generals
     Route::get('/generals', [ApiController::class, 'getGenerals']);
     Route::get('/general/{id}', [ApiController::class, 'getGeneral']);
-    Route::put('/general/{id}', [ApiController::class, 'updateGeneral']);
+    Route::post('/general/{id}', [ApiController::class, 'updateGeneral']);
     Route::post('/general', [ApiController::class, 'insertGeneral']);
     Route::delete('/general/{id}', [ApiController::class, 'deleteGeneral']);
 
