@@ -17,6 +17,8 @@ use App\Models\Anuncio;
 use App\Models\Municipio;
 use App\Models\Provincia;
 use App\Models\Tipo;
+use App\Models\AnuncioImagen;
+use App\Models\Favorito;
 
 /**
  * @OA\Info(
@@ -76,8 +78,20 @@ class ApiController extends BaseController
         return Anuncio::find($id)->vendedor;
     }
 
+    function getImagenes () {
+        return AnuncioImagen::all();
+    }
+
     function getImagenesAnuncio ($id) {
         return Anuncio::find($id)->anuncioimagen;
+    }
+
+    function deleteImagenesAnuncio ($id) {
+        return AnuncioImagen::where("anuncio_id", $id)->delete();
+    }
+
+    function insertImagenesAnuncio (Request $request) {
+        return AnuncioImagen::create($request->all());
     }
 
     /**
@@ -238,10 +252,6 @@ class ApiController extends BaseController
     * )
     */
     function updateAnuncio (Request $request, $id) {
-        // $anuncio = Anuncio::find($id);
-        // $anuncio->update($request->all());
-
-        // return $anuncio;
         return Anuncio::find($id)->update($request->all());
     }
 
@@ -385,50 +395,52 @@ class ApiController extends BaseController
      * )
      */
     function deleteAnuncio (Request $request, $id) {
+        Favorito::where("anuncio_id", $id)->delete();
+        AnuncioImagen::where("anuncio_id", $id)->delete();
         return Anuncio::find($id)->delete();
     }
 
     // Usuarios
     
     /**
-         * @OA\Get(
-         *      path="/api/usuarios",
-         *      tags={"Usuarios"},
-         *      summary="Ver todos los usuarios.",
-         *      @OA\Response(
-         *          response=200,
-         *          description="Devuelve todos los usuarios."
-         *       ),
-         *      @OA\Response(response=400, description="Bad request"),
-         *      @OA\Response(response=404, description="Resource Not Found"),
-         * )
-         */
+     * @OA\Get(
+     *      path="/api/usuarios",
+     *      tags={"Usuarios"},
+     *      summary="Ver todos los usuarios.",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Devuelve todos los usuarios."
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     function getUsuarios () {
         return Usuario::all();
     }
 
     /**
-         * @OA\Get(
-         *      path="/api/usuario/{id}",
-         *      tags={"Usuarios"},
-         *      summary="Ver un usuario.",
-         *      @OA\Parameter(
-         *          name="id",
-         *          description="id del usuario",
-         *          required=true,
-         *          in="path",
-         *          @OA\Schema(
-         *              type="integer"
-         *          )
-         *      ),
-         *      @OA\Response(
-         *          response=200,
-         *          description="Resultado de buscar el usuario por id."
-         *       ),
-         *      @OA\Response(response=400, description="Bad request"),
-         *      @OA\Response(response=404, description="Resource Not Found"),
-         * )
-         */
+     * @OA\Get(
+     *      path="/api/usuario/{id}",
+     *      tags={"Usuarios"},
+     *      summary="Ver un usuario.",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="id del usuario",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Resultado de buscar el usuario por id."
+     *       ),
+     *      @OA\Response(response=400, description="Bad request"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
     function getUsuario (Request $request, $id) {
         return Usuario::find($id);
     }
@@ -870,6 +882,7 @@ class ApiController extends BaseController
         $municipio = Municipio::find($anuncio->municipio_id);
         $provincia = Provincia::find($municipio->provincia_id);
         $tipo = Tipo::find($anuncio->tipo_id);
+        $vendedor = General::find($anuncio->vendedor_id);
 
         $details=[
             'title' => $comprador->nombre . ' ' . $comprador->apellidos .' le escribe por su anuncio en Inmoanuncios.',
@@ -877,7 +890,7 @@ class ApiController extends BaseController
             'email' => $comprador->email,
             'telefono' => $comprador->telefono,
             'referencia' => $anuncio->referencia,
-            'imagen' => $anuncio->imagen,
+            'imagen' => $request->imagen,
             'provincia' => $provincia->nombre,
             'municipio' => $municipio->nombre,
             'precio' => $anuncio->precio,
@@ -886,8 +899,33 @@ class ApiController extends BaseController
             'url' => $request->url
         ];
 
-        Mail::to("inmoanuncios1@gmail.com")->send(new ContactarVendedor($details));
+        // Mail::to("inmoanuncios1@gmail.com")->send(new ContactarVendedor($details));
+        Mail::to($vendedor->email)->send(new ContactarVendedor($details));
         return "Email enviado";
+    }
+
+    function getFavoritos () {
+        return Favorito::all();
+    }
+
+    function getFavorito (Request $request, $id) {
+        return Favorito::find($id);
+    }
+
+    function insertFavorito (Request $request) {
+        return Favorito::create($request->all());
+    }
+
+    function deleteFavorito (Request $request, $id) {
+        return Favorito::find($id)->delete();
+    }
+
+    function getUsuarioFavorito ($id) {
+        return Favorito::find($id)->usuario;
+    }
+
+    function getAnuncioFavorito ($id) {
+        return Favorito::find($id)->anuncio;
     }
 
 }

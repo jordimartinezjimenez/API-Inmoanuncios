@@ -33,6 +33,9 @@ Route::get('/anuncio/provincia/{id}', [ApiController::class, 'getProvinciaAnunci
     Route::get('/municipio/provincia/{id}', [ApiController::class, 'getProvinciaMunicipio']);
 Route::get('/anuncio/vendedor/{id}', [ApiController::class, 'getVendedorAnuncio']);
 Route::get('/anuncio/imagenes/{id}', [ApiController::class, 'getImagenesAnuncio']);
+Route::post('/imagenes', [ApiController::class, 'insertImagenesAnuncio']);
+Route::get('/imagenes', [ApiController::class, 'getImagenes']);
+Route::delete('/anuncio/imagenes/{id}', [ApiController::class, 'deleteImagenesAnuncio']);
 
 // Usuarios
 Route::get('/usuarios', [ApiController::class, 'getUsuarios']);
@@ -64,9 +67,10 @@ Route::get('/tipo/{id}', [ApiController::class, 'getTipo']);
 // Email
 Route::post('/contactar-vendedor', [ApiController::class, 'contactarVendedor']);
 
-// Ejemplos
-// Route::get('/comptes', [ApiController::class, 'getComptes']);
-// Route::get('/compte/{id}', [ApiController::class, 'getCompte']);
-// Route::put('/compte/{id}', [ApiController::class, 'updateCompte']);
-// Route::post('/compte', [ApiController::class, 'insertCompte']);
-// Route::delete('/compte/{id}', [ApiController::class, 'deleteCompte']);
+// Favoritos
+Route::get('/favoritos', [ApiController::class, 'getFavoritos']);
+Route::get('/favorito/{id}', [ApiController::class, 'getFavorito']);
+Route::post('/favorito', [ApiController::class, 'insertFavorito']);
+Route::delete('/favorito/{id}', [ApiController::class, 'deleteFavorito']);
+Route::get('/favorito/usuario/{id}', [ApiController::class, 'getUsuarioFavorito']);
+Route::get('/favorito/anuncio/{id}', [ApiController::class, 'getAnuncioFavorito']);

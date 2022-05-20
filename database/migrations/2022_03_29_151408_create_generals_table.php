@@ -15,7 +15,6 @@ class CreateGeneralsTable extends Migration
     public function up()
     {
         Schema::create('generals', function (Blueprint $table) {
-            // $table->id();
             $table->unsignedBigInteger('id')->primary();
             $table->foreign('id')->references('id')->on('usuarios');
             $table->string('nombre');
